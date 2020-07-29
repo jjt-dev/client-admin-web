@@ -227,9 +227,9 @@ Page({
         var pickerDataList1 = that.data.pickerDataList1
         var pickerDataList2 = that.data.pickerDataList2
         var pickerIndexId1 = that.data.pickerIndexId1
-        var pickerIndexId2 = that.data.pickerIndexId2
-        var pickerIndexId3 = that.data.pickerIndexId3
-        var pickerIndexId4 = that.data.pickerIndexId4
+        var pickerIndexId2 = that.data.pickerId2
+        var pickerIndexId3 = that.data.pickerId3
+        var pickerIndexId4 = that.data.pickerId4
         for (var i = 0; i < datas.length; i++) {
           pickerDataList.push(datas[i].name)
           pickerDataList1.push(datas[i].name)
@@ -312,9 +312,9 @@ Page({
             currLevelId: data.currLevelId,
             pickerIndex: data.gender,
             pickerIndexId1: data.currLevelId,
-            pickerIndexId2: data.signLevels[0].id,
-            pickerIndexId3: data.signLevels[1] ? data.signLevels[1].id : -1,
-            pickerIndexId4: data.signLevels[2] ? data.signLevels[2].id : -1,
+            pickerId2: data.signLevels[0].id,
+            pickerId3: data.signLevels[1] ? data.signLevels[1].id : -1,
+            pickerId4: data.signLevels[2] ? data.signLevels[2].id : -1,
             nowLeve: data.currLevelAlias,
             faceUrl: data.faceUrl,
             faceUrl1: mediaURL + data.faceUrl,
@@ -390,15 +390,12 @@ Page({
         const data = res.data
 
         if (data.status == 1) {
-          console.log(
-            'testtest',
-            data.data.findIndex((item) => item.id == that.data.coachClassId)
+          const coachClassIndex = data.data.findIndex(
+            (item) => item.id === that.data.coachClassId
           )
           that.setData({
             coachClasses: data.data,
-            coachClassIndex: data.data.findIndex(
-              (item) => item.id == that.data.coachClassId
-            ),
+            coachClassIndex: coachClassIndex,
           })
         }
       },
@@ -506,9 +503,6 @@ Page({
     var errorMessage = null
     if (this.data.date == '请选择日期') {
       errorMessage = '请选择生日'
-    }
-    if (!!!this.data.coachClassIndex) {
-      errorMessage = '请选择班级'
     }
     if (util.isEmpty(this.data.currLevelNum)) {
       errorMessage = '请填写级位号'

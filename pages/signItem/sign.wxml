@@ -89,7 +89,7 @@
     <view class="list">
       <view class="listLi">
         <label class="group">报考级别1</label>
-        <picker class="picker" bindchange="pickerLeveClick1" value='{{pickerIndex2}}' range='{{pickerData2}}'>
+        <picker class="picker" bindchange="pickerLeveClick2" value='{{pickerIndex2}}' range='{{pickerData2}}'>
           {{pickerData2[pickerIndex2]}}
         </picker>
       </view>
