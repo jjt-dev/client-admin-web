@@ -46,6 +46,13 @@ Page({
     pickerId2: 0,
     pickerData2: ['请选择单位', '请选择单位'],
     pickerDataList2: ['请选择'],
+
+    pickerIndex3: 0,
+    pickerId3: 0,
+
+    pickerIndex4: 0,
+    pickerId4: 0,
+
     title: '',
     nowLeve: '请输入',
     // 性别
@@ -107,7 +114,7 @@ Page({
     })
   },
   // 选择当前级别
-  pickerLeveClick: function (event) {
+  pickerLeveClick1: function (event) {
     var index = event.detail.value
     var pickerDataList1 = this.data.pickerDataList1
     if (index == 0) {
@@ -123,18 +130,45 @@ Page({
     })
   },
 
-  pickerLeveClick1: function (event) {
+  pickerLeveClick2: function (event) {
     var index = event.detail.value
     var pickerDataList2 = this.data.pickerDataList2
     if (index == 0) {
-      var pickerId1 = -1
+      var pickerId2 = -1
     } else {
-      var pickerId1 = pickerDataList2[index - 1].id
+      var pickerId2 = pickerDataList2[index - 1].id
     }
     this.setData({
       pickerIndex2: event.detail.value,
-      pickerId1: pickerId1,
-      levels: pickerId1,
+      pickerId2: pickerId2,
+    })
+  },
+
+  pickerLeveClick3: function (event) {
+    var index = event.detail.value
+    var pickerDataList2 = this.data.pickerDataList2
+    if (index == 0) {
+      var pickerId3 = -1
+    } else {
+      var pickerId3 = pickerDataList2[index - 1].id
+    }
+    this.setData({
+      pickerIndex3: event.detail.value,
+      pickerId3: pickerId3,
+    })
+  },
+
+  pickerLeveClick4: function (event) {
+    var index = event.detail.value
+    var pickerDataList2 = this.data.pickerDataList2
+    if (index == 0) {
+      var pickerId4 = -1
+    } else {
+      var pickerId4 = pickerDataList2[index - 1].id
+    }
+    this.setData({
+      pickerIndex4: event.detail.value,
+      pickerId4: pickerId4,
     })
   },
 
@@ -192,12 +226,24 @@ Page({
         var pickerDataList = that.data.pickerDataList
         var pickerDataList1 = that.data.pickerDataList1
         var pickerDataList2 = that.data.pickerDataList2
-        var pickerIndexId2 = that.data.pickerIndexId2
         var pickerIndexId1 = that.data.pickerIndexId1
+        var pickerIndexId2 = that.data.pickerIndexId2
+        var pickerIndexId3 = that.data.pickerIndexId3
+        var pickerIndexId4 = that.data.pickerIndexId4
         for (var i = 0; i < datas.length; i++) {
           pickerDataList.push(datas[i].name)
           pickerDataList1.push(datas[i].name)
           pickerDataList2.push(datas[i].name)
+          if (pickerIndexId4 == datas[i].id) {
+            that.setData({
+              pickerIndex4: i + 1,
+            })
+          }
+          if (pickerIndexId3 == datas[i].id) {
+            that.setData({
+              pickerIndex3: i + 1,
+            })
+          }
           if (pickerIndexId2 == datas[i].id) {
             that.setData({
               pickerIndex2: i + 1,
@@ -267,6 +313,8 @@ Page({
             pickerIndex: data.gender,
             pickerIndexId1: data.currLevelId,
             pickerIndexId2: data.signLevels[0].id,
+            pickerIndexId3: data.signLevels[1] ? data.signLevels[1].id : -1,
+            pickerIndexId4: data.signLevels[2] ? data.signLevels[2].id : -1,
             nowLeve: data.currLevelAlias,
             faceUrl: data.faceUrl,
             faceUrl1: mediaURL + data.faceUrl,
@@ -478,6 +526,7 @@ Page({
       return false
     }
 
+    const { pickerId2, pickerId3, pickerId4 } = this.data
     let id = this.data.id
     let obj = e.detail.value
     obj.id = id
@@ -487,7 +536,9 @@ Page({
     obj.examCode = this.data.examCode
     obj.gender = this.data.gender
     obj.faceUrl = this.data.faceUrl
-    obj.levels = this.data.levels
+    obj.levels = [pickerId2, pickerId3, pickerId4]
+      .filter((id) => id > 0)
+      .join(',')
     obj.relationship = this.data.pickerIndex
     obj.birthday = this.data.date
     obj.coachClassId = this.data.coachClasses[this.data.coachClassIndex].id

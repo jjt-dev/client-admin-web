@@ -1,153 +1,127 @@
-<!--pages/signUp/sign.wxml-->
-<!--导航条-->
+<!-- pages/signUp/sign.wxml -->
+<!-- 导航条 -->
 <view class='body'>
-<loading hidden="{{!loading}}">加载中</loading>
-<!-- 头部 -->
-<!-- <navbar page-name="报名详情" ></navbar> -->
-<view class="navbar custom-class">
-  <view class="backimg">
-    <image bindtap="navBack" class="back" src="../../image/index/bt_back.png"></image>
-    <image class="background" src="../../image/index/details_bg_image.png"></image>
-    <view class='navbar-title'>
-     报名详情
-  </view>
-  <!-- 头像 -->
-   <view class="tou" bindtap="bind_phone">
-      <image class="kuang" src="../../image/index/details_ic_heard_bg.png">
-      </image>
-      <image wx:if="{{flag}}" class="touxiang" src='{{faceUrl1}}'>
-        </image>
-      <image wx:if="{{!flag}}" class="touxiang1" src='../../image/index/details_ic_heard.png'>
-        </image>
+  <loading hidden="{{!loading}}">加载中</loading>
+  <!-- 头部 -->
+  <!-- <navbar page-name="报名详情" ></navbar> -->
+  <view class="navbar custom-class">
+    <view class="backimg">
+      <image bindtap="navBack" class="back" src="../../image/index/bt_back.png"></image>
+      <image class="background" src="../../image/index/details_bg_image.png"></image>
+      <view class='navbar-title'>报名详情</view>
+      <!-- 头像 -->
+      <view class="tou" bindtap="bind_phone">
+        <image class="kuang" src="../../image/index/details_ic_heard_bg.png"></image>
+        <image wx:if="{{flag}}" class="touxiang" src='{{faceUrl1}}'></image>
+        <image wx:if="{{!flag}}" class="touxiang1" src='../../image/index/details_ic_heard.png'></image>
         <label wx:if="{{!flag}}">上传头像</label>
+      </view>
     </view>
   </view>
-  
-</view>
-<form bindsubmit='formSubmit'>
-<!-- 主体 -->
-<!-- 1 -->
-<view class="list" >
-  <view class="listLi" >
-     <label class="group" >
-       孩子姓名
-     </label>
-     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{name}}" name="name"></input>
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       孩子性别
-     </label>
-     <picker class="picker" bindchange="genderPicker" value='{{gender}}' range='{{genderList}}'>{{genderList[gender]}}</picker>  
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       孩子生日
-     </label>
-     <view class="section">
-        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-          <view class="picker">
-            {{date}}
-          </view>
+  <form bindsubmit='formSubmit'>
+    <!-- 主体 -->
+    <!-- 1 -->
+    <view class="list">
+      <view class="listLi">
+        <label class="group">孩子姓名</label>
+        <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{name}}" name="name"></input>
+      </view>
+      <view class="listLi">
+        <label class="group">孩子性别</label>
+        <picker class="picker" bindchange="genderPicker" value='{{gender}}' range='{{genderList}}'>
+          {{genderList[gender]}}
         </picker>
       </view>
-  </view>
-</view>
-<!-- 2 -->
-<view class="list" >
- <view class="listLi" >
-     <label class="group" >
-       家长姓名
-     </label>
-     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{parentName}}" name="parentName"></input>
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       家长电话
-     </label>
-     <input type="numer" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{phone}}" name="phone"></input>
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       家长关系
-     </label>
-     <picker class="picker" bindchange="pickerClick" value='{{pickerIndex}}' range='{{relationship}}'>{{relationship[pickerIndex]}}</picker>  
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       孩子身份证号
-     </label>
-     <input type="numer" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{cardId}}" name="cardId"></input>
-  </view>
-</view>
-<!-- 3 -->
-<view class="list" >
-  <view class="listLi" >
-     <label class="group" >
-       班级
-     </label>
-     <picker class="picker" bindchange="pickerCoachClass" range-key='name' value='{{coachClassIndex}}' range='{{coachClasses}}'>{{!!coachClassIndex?coachClasses[coachClassIndex].name:'请选择'}}</picker> 
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       现级别
-     </label>
-     <picker class="picker" bindchange="pickerLeveClick" value='{{pickerIndex1}}' range='{{pickerData1}}'>{{pickerData1[pickerIndex1]}}</picker> 
-  </view>
-  <view class="listLi" >
-     <label class="group">
-       带色
-     </label>
-     <input type="text" class="input" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{nowLeve}}"></input>
-  </view>
-  <view class="listLi" >
-     <label class="group" >
-       级位号
-     </label>
-     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{currLevelNum}}" bindinput="currLevelNum"></input>
-  </view>
-</view>
-<!-- 4 -->
-<view class="list" >
-  <view class="listLi" >
-     <label class="group" >
-       报考级别1
-     </label>
-     <picker class="picker" bindchange="pickerLeveClick1" value='{{pickerIndex2}}' range='{{pickerData2}}'>{{pickerData2[pickerIndex2]}}</picker> 
-  </view>
-    <!-- <view class="listLi" >
-      <label class="group" >
-        报考级别2
-      </label>
-      <picker class="picker" bindchange="pickerLeveClick" value='{{pickerIndex}}' range='{{pickerData}}'>{{pickerData[pickerIndex]}}</picker> 
-  </view> -->
-  <view class="listLi" >
-     <label class="group">
-       考试时间
-     </label>
-     <input type="text" class="input" style="  width: 100%;" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{title}}"></input>
-  </view>
-  </view>
-  <!-- 住址 -->
-  <view class="adress" >
-    <label>住址</label>
-    <textarea placeholder="请输入您的详细地址" placeholder-style="font-size:12px;color:#898989;padding-left:16rpx;" bindinput="address" value="{{address}}">
-    </textarea>
-  </view>
-
-  <!-- 操作层 -->
-  <view class="option">
-      <button class="conform" form-type='submit' data-type="conform">
-        保存
-      </button>
-      <button class="pay" form-type='submit' data-type="pay">
-        查看报名费
-      </button>
-  </view>
+      <view class="listLi">
+        <label class="group">孩子生日</label>
+        <view class="section">
+          <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <!-- 2 -->
+    <view class="list">
+      <view class="listLi">
+        <label class="group">家长姓名</label>
+        <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{parentName}}" name="parentName"></input>
+      </view>
+      <view class="listLi">
+        <label class="group">家长电话</label>
+        <input type="numer" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{phone}}" name="phone"></input>
+      </view>
+      <view class="listLi">
+        <label class="group">家长关系</label>
+        <picker class="picker" bindchange="pickerClick" value='{{pickerIndex}}' range='{{relationship}}'>
+          {{relationship[pickerIndex]}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">孩子身份证号</label>
+        <input type="numer" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{cardId}}" name="cardId"></input>
+      </view>
+    </view>
+    <!-- 3 -->
+    <view class="list">
+      <view class="listLi">
+        <label class="group">班级</label>
+        <picker class="picker" bindchange="pickerCoachClass" range-key='name' value='{{coachClassIndex}}' range='{{coachClasses}}'>
+          {{!!coachClassIndex?coachClasses[coachClassIndex].name:'请选择'}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">现级别</label>
+        <picker class="picker" bindchange="pickerLeveClick1" value='{{pickerIndex1}}' range='{{pickerData1}}'>
+          {{pickerData1[pickerIndex1]}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">带色</label>
+        <input type="text" class="input" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{nowLeve}}"></input>
+      </view>
+      <view class="listLi">
+        <label class="group">级位号</label>
+        <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{currLevelNum}}" bindinput="currLevelNum"></input>
+      </view>
+    </view>
+    <!-- 4 -->
+    <view class="list">
+      <view class="listLi">
+        <label class="group">报考级别1</label>
+        <picker class="picker" bindchange="pickerLeveClick2" value='{{pickerIndex2}}' range='{{pickerData2}}'>
+          {{pickerData2[pickerIndex2]}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">报考级别2</label>
+        <picker class="picker" bindchange="pickerLeveClick3" value='{{pickerIndex3}}' range='{{pickerData2}}'>
+          {{pickerData2[pickerIndex3]}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">报考级别3</label>
+        <picker class="picker" bindchange="pickerLeveClick4" value='{{pickerIndex4}}' range='{{pickerData2}}'>
+          {{pickerData2[pickerIndex4]}}
+        </picker>
+      </view>
+      <view class="listLi">
+        <label class="group">考试时间</label>
+        <input type="text" class="input" style="  width: 100%;" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{title}}"></input>
+      </view>
+    </view>
+    <!-- 住址 -->
+    <view class="adress">
+      <label>住址</label>
+      <textarea placeholder="请输入您的详细地址" placeholder-style="font-size:12px;color:#898989;padding-left:16rpx;" bindinput="address" value="{{address}}"></textarea>
+    </view>
+    <!-- 操作层 -->
+    <view class="option">
+      <button class="conform" form-type='submit' data-type="conform">保存</button>
+      <button class="pay" form-type='submit' data-type="pay">查看报名费</button>
+    </view>
   </form>
 </view>
 <view class='tusicon' wx:if="{{msgFlag}}">
-  <view class='text'>
-      {{msgdata}}
-  </view>
+  <view class='text'>{{msgdata}}</view>
 </view>

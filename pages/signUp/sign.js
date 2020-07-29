@@ -48,6 +48,13 @@ Page({
     pickerId2: 0,
     pickerData2: ['请选择单位', '请选择单位'],
     pickerDataList2: ['请选择'],
+
+    pickerIndex3: 0,
+    pickerId3: 0,
+
+    pickerIndex4: 0,
+    pickerId4: 0,
+
     title: '',
     nowLeve: '请输入',
     // 性别
@@ -110,34 +117,61 @@ Page({
     })
   },
   // 选择当前级别
-  pickerLeveClick: function (event) {
+  pickerLeveClick1: function (event) {
     var index = event.detail.value
     var pickerDataList1 = this.data.pickerDataList1
     if (index == 0) {
-      var pickerId = -1
+      var pickerId1 = -1
     } else {
-      var pickerId = pickerDataList1[index - 1].id
+      var pickerId1 = pickerDataList1[index - 1].id
     }
     this.setData({
       pickerIndex1: event.detail.value,
-      pickerId: pickerId,
-      currLevelId: pickerId,
+      pickerId1: pickerId1,
+      currLevelId: pickerId1,
       nowLeve: pickerDataList1[index - 1].alias,
     })
   },
 
-  pickerLeveClick1: function (event) {
+  pickerLeveClick2: function (event) {
     var index = event.detail.value
     var pickerDataList2 = this.data.pickerDataList2
     if (index == 0) {
-      var pickerId = -1
+      var pickerId2 = -1
     } else {
-      var pickerId = pickerDataList2[index - 1].id
+      var pickerId2 = pickerDataList2[index - 1].id
     }
     this.setData({
       pickerIndex2: event.detail.value,
-      pickerId1: pickerId,
-      levels: pickerId,
+      pickerId2: pickerId2,
+    })
+  },
+
+  pickerLeveClick3: function (event) {
+    var index = event.detail.value
+    var pickerDataList2 = this.data.pickerDataList2
+    if (index == 0) {
+      var pickerId3 = -1
+    } else {
+      var pickerId3 = pickerDataList2[index - 1].id
+    }
+    this.setData({
+      pickerIndex3: event.detail.value,
+      pickerId3: pickerId3,
+    })
+  },
+
+  pickerLeveClick4: function (event) {
+    var index = event.detail.value
+    var pickerDataList2 = this.data.pickerDataList2
+    if (index == 0) {
+      var pickerId4 = -1
+    } else {
+      var pickerId4 = pickerDataList2[index - 1].id
+    }
+    this.setData({
+      pickerIndex4: event.detail.value,
+      pickerId4: pickerId4,
     })
   },
 
@@ -401,6 +435,7 @@ Page({
       return false
     }
 
+    const { pickerId2, pickerId3, pickerId4 } = this.data
     let obj = e.detail.value
     obj.address = this.data.address
     obj.coachId = this.data.coachId
@@ -408,7 +443,9 @@ Page({
     obj.examCode = this.data.examCode
     obj.gender = this.data.gender
     obj.faceUrl = this.data.faceUrl
-    obj.levels = this.data.levels
+    obj.levels = [pickerId2, pickerId3, pickerId4]
+      .filter((id) => id > 0)
+      .join(',')
     obj.relationship = this.data.pickerIndex
     obj.birthday = this.data.date
     obj.coachClassId = this.data.coachClasses[this.data.coachClassIndex].id
