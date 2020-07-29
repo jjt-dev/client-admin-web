@@ -1,0 +1,14 @@
+<!--pages/repairList/repairList.wxml-->
+<!--导航条-->
+<view class='body'>
+<loading hidden="{{!loading}}">加载中</loading>
+<!-- 头部 -->
+<navbar page-name="成绩查询结果"></navbar>
+
+<!-- 主题 -->
+<view class="back">
+  <image src="../../image/results/enquiry_bg_images2.png"></image>
+  <label>没有相关信息</label>
+</view>
+
+</view>

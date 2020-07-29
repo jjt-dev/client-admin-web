@@ -1,0 +1,13 @@
+<view class="navbar custom-class">
+  <view class="backimg">
+    <view class="back" bindtap="navBack">
+      
+    </view>
+    <image bindtap="navBack" class="back" src="../../image/index/bt_back.png"></image>
+    <image class="background" src="../../image/index/nav_bg_images.png"></image>
+    <view class='navbar-title'>
+     {{pageName}}
+  </view>
+  </view>
+  
+</view>

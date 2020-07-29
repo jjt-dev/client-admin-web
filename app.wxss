@@ -1,0 +1,76 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.body {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+    background: #fff;
+}
+/* 更改title样式 */
+.nav-title {
+  font-size: 16px;
+}
+page{
+  height:100%;
+  width: 100%;
+  background: #fff;
+}
+.address_con{
+  background: #fff;
+}
+.header{
+  height: 160rpx;
+  width: 100%;
+  display: flex;
+  background: #6091cc;
+  font-size: 32rpx;
+}
+.header .title{
+    width: auto;
+    margin: 0 auto;
+    line-height: 80rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 32rpx;
+    position: absolute;
+    left:30rpx;
+    top:60rpx;
+    letter-spacing: 3rpx;
+}
+.header .title icon{
+  width:60rpx;
+  text-align: center;
+  font-size: 18px;
+}
+
+.tusicon{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+}
+.tusicon .text{
+  position: absolute;
+  width: 260rpx;
+  height: auto;
+  line-height: 1.5;
+  background: #8a8a8a;
+  border-radius: 30rpx;
+  top: 80%;
+  margin-left: -130rpx;
+  left: 50%;
+  padding: 15rpx 10rpx;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+}

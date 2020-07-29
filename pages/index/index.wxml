@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">
+    <image src="../../image/login/sign_logo_font.png">
+    </image>
+  </view>
+  <view class="content">
+    <image src="../../image/login/sign.png">
+    </image>
+  </view>
+  <view class="usermotto">
+    <button class="user-motto" wx:if="{{canIUse}}" 
+	open-type="getUserInfo" 
+	bindgetuserinfo="bindGetUserInfo">
+  <image src="../../image/login/sign_eixin.png"></image>
+  <label>{{motto}}</label></button> 
+  <view wx:else>请升级微信版本</view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<view class="navbar custom-class">
+  <view class="backimg">
+    <image bindtap="navBack" class="back" src="../../image/index/bt_back.png"></image>
+    <image class="background" src="../../image/index/details_bg_image.png"></image>
+    <view class='navbar-title'>
+     {{pageName}}
+  </view>
+  <!-- 头像 -->
+   <view class="tou" bindtap="bind_phone">
+      <image class="kuang" src="../../image/index/details_ic_heard_bg.png">
+      </image>
+      <image wx:if="{{flag}}" class="touxiang" src='{{faceUrl}}'>
+        </image>
+      <image wx:if="{{!flag}}" class="touxiang1" src='../../image/index/details_ic_heard.png'>
+        </image>
+        <label wx:if="{{!flag}}">上传头像</label>
+    </view>
+  </view>
+  
+</view>

@@ -1,0 +1,118 @@
+/* pages/signUp/sign.wxss */
+@import "../navbar2/navbar.wxss";
+/* 列表 */
+.body{
+  background: #F0EDF1;
+}
+.list{
+  width:712rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 6rpx 0px rgba(28,44,29,0.16);
+  border-radius:10rpx;
+  margin: 35rpx auto 0;
+}
+.listLi{
+  display: flex;
+  height: 98rpx;
+  border-bottom: 1rpx solid #D2D2D2;
+  width: 712rpx;
+  position: relative;
+}
+.listLi:last-child{
+  border: none;
+}
+.listLi .group{
+  font-size:15px;
+  font-family:Microsoft YaHei;
+  color:rgba(49,49,49,1);
+  line-height:98rpx;
+  padding-left: 26rpx;
+}
+.input{
+  position: absolute;
+  right: 26rpx;
+  height: 100%;
+  font-size:12px;
+  font-family:Microsoft YaHei;
+  font-weight:400;
+  color:rgba(137,137,137,1);
+  line-height:98rpx;
+  text-align: right;
+
+}
+.picker{
+   position: absolute;
+  right: 26rpx;
+  height: 100%;
+  font-size:12px;
+  font-family:Microsoft YaHei;
+  font-weight:400;
+  color:rgba(137,137,137,1);
+  line-height:98rpx;
+  text-align: right;
+}
+
+/* 住址 */
+.adress{
+  width:712rpx;
+  height:254rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 6rpx 0px rgba(28,44,29,0.16);
+  border-radius:10rpx;
+  margin:19rpx auto 0;
+}
+.adress label{
+  font-size:15px;
+  font-family:Microsoft YaHei;
+  font-weight:400;
+  color:rgba(49,49,49,1);
+  margin-top: 39rpox;
+  margin-left: 24rpx;
+
+}
+textarea{
+  width:634rpx;
+  height:96rpx;
+  background:rgba(248,246,249,1);
+  border:1px solid rgba(210,210,210,1);
+  border-radius:3rpx;
+  margin: 13rpx auto 0;
+  padding: 16rpx;
+  font-size: 12px;
+}
+
+/* 操作 */
+.option{
+  width:750rpx;
+  height:125rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 6rpx 0px rgba(28,44,29,0.38);
+  margin-top: 65rpx;
+  display: flex;
+}
+.conform{
+  width:241rpx;
+  height:67rpx;
+  background:rgba(255,255,255,1);
+  border:2rpx solid rgba(75,113,230,1);
+  border-radius:34rpx;
+  margin-left: 44rpx;
+  margin-top: 25rpx;
+  text-align: center;
+  line-height:67rpx; 
+  color: #4B71E6;
+  font-size: 15px;
+}
+.pay{
+  width:399rpx;
+  height:67rpx;
+  background:rgba(75,113,230,1);
+  border:2rpx solid rgba(75,113,230,1);
+  border-radius:34rpx;
+  text-align: center;
+  line-height: 67rpx;
+  color: #fff;
+  margin-left: 24rpx;
+  margin-top: 25rpx;
+  font-size: 15px;
+}

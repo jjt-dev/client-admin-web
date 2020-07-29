@@ -1,0 +1,43 @@
+<!--pages/repairList/repairList.wxml-->
+<!--导航条-->
+<view class='body'>
+<loading hidden="{{!loading}}">加载中</loading>
+<!-- 头部 -->
+<view class="navbar">
+  <view class="backimg">
+    <image bindtap="navBack" class="back" src="../../image/index/bt_back.png"></image>
+    <image class="background" src="../../image/index/details_bg_image.png"></image>
+    <view class='navbar-title'>
+     {{pageName}}
+    </view>
+     <view class="tou">
+      <image class="kuang" src="../../image/index/details_ic_heard_bg.png">
+      </image>
+      <image class="touxiang" src='{{faceUrl}}'>
+        </image>
+    </view>
+    <!-- 姓名 -->
+     <view class='name'>
+          {{userName}} | {{sex}}
+      </view>
+      <!-- card -->
+       <view class='cord'>
+        身份证： {{cordNumber}}
+      </view>
+</view>
+</view>
+<!-- 主体 -->
+<view class="list" >
+  <view class="listLi" wx:for="{{list}}" wx:key="id">
+     <label class="group" >
+        {{item.examName}}{{item.levelName}}
+     </label>
+     <view class="star">
+        <image wx:for="{{item.star}}" wx:key="star" src="../../image/results/enquiry_ic_star.png"> 
+        </image>
+     </view>
+     <label class="evaluation">{{item.gradeName}}</label>
+  </view>
+</view>
+
+</view>

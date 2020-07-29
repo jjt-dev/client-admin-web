@@ -1,0 +1,30 @@
+<!--pages/repairList/repairList.wxml-->
+<!--导航条-->
+<view class='body'>
+<loading hidden="{{!loading}}">加载中</loading>
+<!-- 头部 -->
+<navbar page-name="教练列表"></navbar>
+<!--处理中-->
+<view style="width:679rpx;margin:0 auto;">
+   <block class="" wx:for="{{list}}" wx:key="id">
+   <navigator url='../signUp/sign?id={{ item.id }}&examCode={{item.examCode}}'>
+      <view id="{{item.id}}">
+        <view class='listcontent' hover-class='hover-class' id="{{item.id}}">
+            <image class="icon" src="{{item.faceUrl}}">
+            </image>
+            <label>
+              {{item.name}}
+            </label>
+            <image class="right" src="../../image/index/bt_next.png">
+
+            </image>
+        </view>
+      </view>
+    </navigator>
+  </block>
+ <view class='back' wx:if="{{unfinsh}}" style="width:unset">  
+    <image class='nodate' src='../../image/results/enquiry_bg_images2.png'></image>
+    <label>暂无教练</label>
+    </view>
+  </view>
+  </view>

@@ -1,0 +1,32 @@
+@import "../../pages/coach/coach.wxss";
+@import "../../pages/resultsNo/resultsNo.wxss";
+.listcontent{
+  height: 90rpx;
+  margin: 29rpx auto 0;
+
+}
+.listcontent .icon{
+  width:45rpx;
+  height:45rpx;
+  margin-top: 23rpx;
+}
+.listcontent label{
+line-height:90rpx;
+margin-left: 20rpx;
+}
+.state{
+  position: absolute;
+  right: 63rpx;
+}
+.listcontent .right{
+  top: 27rpx;
+}
+.back label{
+  width: 100%;
+  text-align: center;
+  font-size:15px;
+  display: block;
+  font-family:Microsoft YaHei;
+  font-weight:400;
+  color:rgba(125,125,125,1);
+}

@@ -1,0 +1,34 @@
+<!--pages/repairList/repairList.wxml-->
+<!--导航条-->
+<view class='body'>
+<loading hidden="{{!loading}}">{{title}}</loading>
+<!-- 头部 -->
+<navbar page-name="报名历史"></navbar>
+<!--处理中-->
+<view style="width:679rpx;margin:0 auto;">
+   <block class="" wx:for="{{list}}" wx:key="id">
+   <navigator url='../signItem/sign?id={{ item.signId }}&examCode={{item.examCode}}&currState={{item.currState}}'>
+      <view id="{{item.id}}">
+        <view class='listcontent' hover-class='hover-class' id="{{item.id}}">
+            <image class="icon" wx:if="{{ item.currState == 0}}" src="../../image/index/history_money.png">
+            </image>
+            <image class="icon" wx:if="{{ item.currState != 0}}" src="../../image/index/history_money_no.png">
+            </image>
+            <label>
+              {{item.title}}
+            </label>
+            <label class="state">
+              {{item.state}}
+            </label>
+            <image class="right" src="../../image/index/bt_next.png">
+            </image>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <view class='back' wx:if="{{unfinsh}}" style="width:unset">  
+    <image class='nodate' src='../../image/results/enquiry_bg_images2.png'></image>
+    <label>暂无报名历史</label>
+    </view>
+  </view>
+  </view>

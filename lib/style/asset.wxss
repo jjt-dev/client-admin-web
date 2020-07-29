@@ -1,0 +1,24 @@
+.tusicon{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, .4); */
+}
+.tusicon .text{
+  width: 200rpx;
+  height: auto;
+  line-break: 1.5;
+  font-size: 14px;
+  padding: 20rpx;
+  position: fixed;
+  top: 40%;
+  margin-top:-40rpx;
+  left: 50%;
+  margin-left: -100rpx;
+  background: rgba(0, 0, 0, .6);
+  color: #fff;
+  text-align: center;
+  border-radius: 8rpx;
+}

@@ -1,0 +1,117 @@
+/* pages/results/results.wxss */
+.back1 {
+  width: 100%;
+  height: calc(100% - 200rpx);
+  position: absolute;
+  z-index: 1;
+  top: 200rpx;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.back1 image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.back1 .image1 {
+  width: 350rpx;
+  height: 336rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.back1 .image2 {
+  width: 542rpx;
+  height: 153rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 700rpx;
+  margin: 0 auto;
+}
+
+.back1 .image3 {
+  width: 739rpx;
+  height: 191rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 930rpx;
+  margin: 0 auto;
+}
+
+.back1 .input {
+  width: 645rpx;
+  height: 86rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 42rpx 1rpx rgba(28, 44, 29, 0.16);
+  border-radius: 43rpx;
+  position: absolute;
+  z-index: 2;
+  top: 370rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-size: 15px;
+  padding-left: 40rpx;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-size: 15px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(137, 137, 137, 1);
+}
+
+input::-webkit-input-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-size: 15px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(137, 137, 137, 1);
+}
+
+input::-webkit-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-size: 15px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(137, 137, 137, 1);
+}
+
+/* 查询 */
+.search {
+  width: 652rpx;
+  height: 88rpx;
+  background: rgba(70, 114, 232, 1);
+  border-radius: 44rpx;
+  position: relative;
+  z-index: 2;
+  top: 500rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.search image {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  left: 257rpx;
+  top: 30rpx;
+}
+.search label {
+  width: 80rpx;
+  position: absolute;
+  left: 306rpx;
+  font-size: 15px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  top: 20rpx;
+}

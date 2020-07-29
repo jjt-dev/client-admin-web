@@ -1,0 +1,25 @@
+/* pages/resultsNo/resultsNo.wxss */
+.body{
+  background: #F0EDF1;
+}
+.back{
+  width:750rpx;
+  height:600rpx;
+  margin-top: 27rpx;
+
+}
+.back image{
+  width: 500rpx;
+  height: 350rpx;
+  display: block;
+  margin: 200rpx auto 0;
+}
+.back label{
+  width: 100%;
+  text-align: center;
+  font-size:15px;
+  display: block;
+  font-family:Microsoft YaHei;
+  font-weight:400;
+  color:rgba(125,125,125,1);
+}

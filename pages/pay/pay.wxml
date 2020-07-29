@@ -1,0 +1,75 @@
+<!--pages/repairList/repairList.wxml-->
+<!--导航条-->
+<view class='body'>
+<loading hidden="{{!loading}}">加载中</loading>
+<!-- 头部 -->
+<navbar page-name="支付结果"></navbar>
+<!-- 1 -->
+<view class="list" >
+  <view class="listLi" >
+     <label class="group" >
+       考试名称
+     </label>
+     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" disabled="true" value="{{name}}"></input>
+  </view>
+  <view class="listLi" >
+     <label class="group" >
+       考试时间
+     </label>
+     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{date}}"></input>
+  </view>
+  <view class="listLi" >
+     <label class="group" >
+       考试地址
+     </label>
+    <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" disabled="true" value="{{address}}"></input>
+  </view>
+</view>
+
+<!-- 级别 -->
+<view class="list" >
+  <view class="listLi" wx:for="{{group}}" wx:key="{{item.id}}">
+     <label class="group" >
+       报考级别 
+     </label>
+     <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" disabled="true" value="{{item.name}}"></input>
+  </view>
+</view>
+<!-- 钱数 -->
+<view class="money">
+  <label class="feeLable">
+    所需费用：
+  </label>
+  <view class="fee">
+     <label class="icon">¥</label>
+     <label class="number">
+      {{totalFee}}
+     </label>
+  </view>
+ <!-- 成功 -->
+<view class="success" wx:if="{{!flag}}">
+  <image src="../../image/index/bt_pay Success.png">
+  </image>
+  <label>
+      支付成功
+  </label>  
+</view>
+</view>
+<!-- 操作 -->
+<view class="option" wx:if="{{flag}}">
+      <view class="pay" bindtap="pay">
+        报名成功, 去线下支付
+      </view>
+  </view>
+<view class="option" wx:if="{{!flag}}">
+      <view class="pay" bindtap="paySuccess">
+        支付完成
+      </view>
+  </view>
+</view>
+
+<view class='tusicon' wx:if="{{msgFlag}}">
+  <view class='text'>
+      {{msgdata}}
+  </view>
+</view>

@@ -1,0 +1,67 @@
+/**index.wxss**/
+page{
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+.usermotto{
+  position: absolute;
+  top: 760rpx;
+  width:652rpx;
+  height:88rpx;
+  background:rgba(70,114,232,1);
+  border-radius:44rpx;
+}
+.user-motto{
+    width:652rpx;
+    height:88rpx;
+    border-radius:48rpx;
+    color: #fff;
+    background:rgba(70,114,232,1);
+    line-height: 88rpx;
+    font-weight: bold;
+    position: absolute;
+    z-index: 1;
+    font-size: 16px;
+}
+.user-motto label{
+  margin-left: 120rpx;
+}
+.usermotto image{
+  width:48rpx;
+  height:41rpx;
+  position: absolute;
+  left: 180rpx;
+  top: 23rpx;
+  z-index: 2;
+}
+/* title */
+.title{
+  width:164rpx;
+  height:44rpx;
+  position: relative;
+  top: 176rpx;
+  margin: 0 auto;
+}
+.title image{
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.content{
+  width:343rpx;
+  height:269rpx;
+  position: absolute;
+  top: 246rpx;
+  margin: 0 auto;
+}
+.content image{
+  display: block;
+  height: 100%;
+  width: 100%;
+}
