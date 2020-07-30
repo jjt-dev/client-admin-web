@@ -89,20 +89,20 @@
     <view class="list">
       <view class="listLi">
         <label class="group">报考级别1</label>
-        <picker class="picker" bindchange="pickerLeveClick2" value='{{pickerIndex2}}' range='{{pickerData2}}'>
-          {{pickerData2[pickerIndex2]}}
+        <picker class="picker" bindchange="selectLevel1" value='{{levelId1Index}}' range='{{canSignLevelPickerList}}'>
+          {{canSignLevelPickerList[levelId1Index]}}
         </picker>
       </view>
       <view class="listLi">
         <label class="group">报考级别2</label>
-        <picker class="picker" bindchange="pickerLeveClick3" value='{{pickerIndex3}}' range='{{pickerData2}}'>
-          {{pickerData2[pickerIndex3]}}
+        <picker class="picker" bindchange="selectLevel2" value='{{levelId2Index}}' range='{{canSignLevelPickerList}}'>
+          {{canSignLevelPickerList[levelId2Index]}}
         </picker>
       </view>
       <view class="listLi">
         <label class="group">报考级别3</label>
-        <picker class="picker" bindchange="pickerLeveClick4" value='{{pickerIndex4}}' range='{{pickerData2}}'>
-          {{pickerData2[pickerIndex4]}}
+        <picker class="picker" bindchange="selectLevel3" value='{{levelId3Index}}' range='{{canSignLevelPickerList}}'>
+          {{canSignLevelPickerList[levelId3Index]}}
         </picker>
       </view>
       <view class="listLi">
@@ -118,7 +118,7 @@
     <!-- 操作层 -->
     <view class="option" wx:if="{{currStateFlag}}">
       <button class="conform" form-type='submit' data-type="conform">保存</button>
-      <button class="pay" form-type='submit' data-type="pay">去支付报名费</button>
+      <button class="pay" form-type='submit' data-type="pay">查看报名费</button>
     </view>
   </form>
   <view class="mask" wx:if="{{!currStateFlag}}"></view>

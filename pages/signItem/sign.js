@@ -88,6 +88,15 @@ Page({
     phone: '',
     // 报考人和考生的关系
     // relationship:'',
+
+    levelId1: null,
+    levelId2: null,
+    levelId3: null,
+    levelId1Index: -1,
+    levelId2Index: -1,
+    levelId3Index: -1,
+    canSignLevelList: [],
+    canSignLevelPickerList: [],
   },
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -130,45 +139,42 @@ Page({
     })
   },
 
-  pickerLeveClick2: function (event) {
+  selectLevel1: function (event) {
     var index = event.detail.value
-    var pickerDataList2 = this.data.pickerDataList2
     if (index == 0) {
-      var pickerId2 = -1
+      var levelId1 = -1
     } else {
-      var pickerId2 = pickerDataList2[index - 1].id
+      var levelId1 = this.data.canSignLevelList[index].id
     }
     this.setData({
-      pickerIndex2: event.detail.value,
-      pickerId2: pickerId2,
+      levelId1Index: event.detail.value,
+      levelId1: levelId1,
     })
   },
 
-  pickerLeveClick3: function (event) {
+  selectLevel2: function (event) {
     var index = event.detail.value
-    var pickerDataList2 = this.data.pickerDataList2
     if (index == 0) {
-      var pickerId3 = -1
+      var levelId2 = -1
     } else {
-      var pickerId3 = pickerDataList2[index - 1].id
+      var levelId2 = this.data.canSignLevelList[index].id
     }
     this.setData({
-      pickerIndex3: event.detail.value,
-      pickerId3: pickerId3,
+      levelId2Index: event.detail.value,
+      levelId2: levelId2,
     })
   },
 
-  pickerLeveClick4: function (event) {
+  selectLevel3: function (event) {
     var index = event.detail.value
-    var pickerDataList2 = this.data.pickerDataList2
     if (index == 0) {
-      var pickerId4 = -1
+      var levelId3 = -1
     } else {
-      var pickerId4 = pickerDataList2[index - 1].id
+      var levelId3 = this.data.canSignLevelList[index].id
     }
     this.setData({
-      pickerIndex4: event.detail.value,
-      pickerId4: pickerId4,
+      levelId3Index: event.detail.value,
+      levelId3: levelId3,
     })
   },
 
@@ -273,14 +279,13 @@ Page({
             pickerId2: pickerId,
           })
         }
-        that.getProcess2(token, examCode)
       },
       fail: function (res) {
         console.log('submit fail')
       },
     })
   },
-  getProcess2: function (token, examCode) {
+  getCanSignLevelList: function (token, examCode) {
     var that = this
     wx.request({
       url: baseURL + '/sign/canSignLevelList',
@@ -293,12 +298,33 @@ Page({
         examCode: examCode,
       },
       success: function (res) {
-        var datas = res.data.data
-        const canSignLevels = that.data.pickerData2.filter((name) =>
-          datas.some((item) => item.name === name)
+        const canSignLevelList = [{ name: '请选择', id: -1 }].concat(
+          res.data.data
         )
+        let levelId1Index = canSignLevelList.findIndex(
+          (level) => level.id === that.data.levelId1
+        )
+        if (levelId1Index === -1) {
+          levelId1Index = 0
+        }
+        let levelId2Index = canSignLevelList.findIndex(
+          (level) => level.id === that.data.levelId2
+        )
+        if (levelId2Index === -1) {
+          levelId2Index = 0
+        }
+        let levelId3Index = canSignLevelList.findIndex(
+          (level) => level.id === that.data.levelId3
+        )
+        if (levelId3Index === -1) {
+          levelId3Index = 0
+        }
         that.setData({
-          pickerData2: canSignLevels,
+          canSignLevelList: canSignLevelList,
+          canSignLevelPickerList: canSignLevelList.map((level) => level.name),
+          levelId1Index: levelId1Index,
+          levelId2Index: levelId2Index,
+          levelId3Index: levelId3Index,
         })
       },
       fail: function (res) {
@@ -342,6 +368,9 @@ Page({
             pickerId2: data.signLevels[0].id,
             pickerId3: data.signLevels[1] ? data.signLevels[1].id : -1,
             pickerId4: data.signLevels[2] ? data.signLevels[2].id : -1,
+            levelId1: data.signLevels[0].id,
+            levelId2: data.signLevels[1] ? data.signLevels[1].id : -1,
+            levelId3: data.signLevels[2] ? data.signLevels[2].id : -1,
             nowLeve: data.currLevelAlias,
             faceUrl: data.faceUrl,
             faceUrl1: mediaURL + data.faceUrl,
@@ -356,6 +385,7 @@ Page({
             coachId: data.coachId,
           })
           that.getCoachClasses(token, examCode, data.coachId)
+          that.getCanSignLevelList(token, examCode)
         }
       },
       fail: function (res) {
@@ -547,7 +577,7 @@ Page({
       return false
     }
 
-    const { pickerId2, pickerId3, pickerId4 } = this.data
+    const { levelId1, levelId2, levelId3 } = this.data
     let id = this.data.id
     let obj = e.detail.value
     obj.id = id
@@ -557,9 +587,7 @@ Page({
     obj.examCode = this.data.examCode
     obj.gender = this.data.gender
     obj.faceUrl = this.data.faceUrl
-    obj.levels = [pickerId2, pickerId3, pickerId4]
-      .filter((id) => id > 0)
-      .join(',')
+    obj.levels = [levelId1, levelId2, levelId3].filter((id) => id > 0).join(',')
     obj.relationship = this.data.pickerIndex
     obj.birthday = this.data.date
     obj.coachClassId = this.data.coachClasses[this.data.coachClassIndex].id
