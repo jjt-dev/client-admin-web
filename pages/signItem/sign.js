@@ -233,28 +233,10 @@ Page({
         var pickerDataList1 = that.data.pickerDataList1
         var pickerDataList2 = that.data.pickerDataList2
         var pickerIndexId1 = that.data.pickerIndexId1
-        var pickerIndexId2 = that.data.pickerId2
-        var pickerIndexId3 = that.data.pickerId3
-        var pickerIndexId4 = that.data.pickerId4
         for (var i = 0; i < datas.length; i++) {
           pickerDataList.push(datas[i].name)
           pickerDataList1.push(datas[i].name)
           pickerDataList2.push(datas[i].name)
-          if (pickerIndexId4 == datas[i].id) {
-            that.setData({
-              pickerIndex4: i + 1,
-            })
-          }
-          if (pickerIndexId3 == datas[i].id) {
-            that.setData({
-              pickerIndex3: i + 1,
-            })
-          }
-          if (pickerIndexId2 == datas[i].id) {
-            that.setData({
-              pickerIndex2: i + 1,
-            })
-          }
           if (pickerIndexId1 == datas[i].id) {
             that.setData({
               pickerIndex1: i + 1,
@@ -363,7 +345,7 @@ Page({
             cardId: data.cardId,
             levels: data.signLevels[0].id,
             currLevelId: data.currLevelId,
-            pickerIndex: data.gender,
+            pickerIndex: data.relationship,
             pickerIndexId1: data.currLevelId,
             pickerId2: data.signLevels[0].id,
             pickerId3: data.signLevels[1] ? data.signLevels[1].id : -1,
