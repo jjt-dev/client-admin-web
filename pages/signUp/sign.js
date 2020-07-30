@@ -255,6 +255,33 @@ Page({
             pickerId2: pickerId,
           })
         }
+        that.getProcess2(token, examCode)
+      },
+      fail: function (res) {
+        console.log('submit fail')
+      },
+    })
+  },
+  getProcess2: function (token, examCode) {
+    var that = this
+    wx.request({
+      url: baseURL + '/sign/canSignLevelList',
+      header: {
+        authorization: 'Bearer ' + token,
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'get',
+      data: {
+        examCode: examCode,
+      },
+      success: function (res) {
+        var datas = res.data.data
+        const canSignLevels = that.data.pickerData2.filter((name) =>
+          datas.some((item) => item.name === name)
+        )
+        that.setData({
+          pickerData2: ['请选择'].concat(canSignLevels),
+        })
       },
       fail: function (res) {
         console.log('submit fail')
