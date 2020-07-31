@@ -4,9 +4,7 @@ var config = require("../../lib/js/config.js");
 var baseURL = config.config().baseURL;
 var mediaURL = config.config().mediaURL;
 //声明js
-var time = require("../../utils/util.js");
 var common = require("../../lib/js/common.js");
-var app = getApp();
 Page({
   data: {
     //全局变量

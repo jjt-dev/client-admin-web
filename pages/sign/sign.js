@@ -1,6 +1,6 @@
 // pages/sign/sign.js
 var config = require("../../lib/js/config.js");
-var utils = require("../../lib/js/common");
+var common = require("../../lib/js/common");
 var baseURL = config.config().baseURL;
 Page({
   /**
@@ -13,13 +13,54 @@ Page({
     tokenFlag: true,
     examCode: null,
   },
-  newSign: function () {
+  newSign: function (e) {
     wx.getStorage({
       key: "examCode",
       success(res) {
-        console.log("stored examcode", res.data);
         wx.navigateTo({
           url: "../../pages/coach/coach?examCode=" + res.data,
+        });
+      },
+      fail(res) {
+        wx.authorize({
+          scope: "scope.camera",
+          success() {
+            wx.getSetting({
+              success(res) {
+                if (res.authSetting["scope.camera"]) {
+                  wx.scanCode({
+                    success: (res) => {
+                      if (res.result) {
+                        wx.navigateTo({
+                          url:
+                            "../../pages/coach/coach?examCode=" +
+                            common.getExamCodeFromUrl(res.result),
+                        });
+                      }
+                    },
+                  });
+                }
+              },
+            });
+          },
+          fail() {
+            wx.getSetting({
+              success(res) {
+                console.log(res);
+                if (
+                  res.authSetting["scope.camera"] == false &&
+                  res.authSetting["scope.camera"] != undefined
+                ) {
+                  wx.showModal({
+                    title: "用户未授权",
+                    content:
+                      "如需正常使用小程序功能，请按确定并且在【我的】页面中点击授权按钮，勾选摄像头并点击确定。",
+                    showCancel: false,
+                  });
+                }
+              },
+            });
+          },
         });
       },
     });
@@ -44,7 +85,7 @@ Page({
       duration: 2000,
     });
   },
-  bindGetUserInfo: utils.throttle(function (e) {
+  bindGetUserInfo: common.throttle(function (e) {
     var that = this;
     if (e.detail.userInfo) {
       wx.showLoading({
@@ -138,11 +179,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    const examCode = decodeURIComponent(options.q).split("=")[1];
+    const examCode = common.getExamCodeFromUrl(options.q);
     if (examCode) {
       wx.setStorage({
         key: "examCode",
-        data: decodeURIComponent(options.q).split("=")[1],
+        data: examCode,
       });
     }
 
