@@ -463,7 +463,14 @@ Page({
     obj.gender = this.data.gender;
     obj.faceUrl = this.data.faceUrl;
     obj.levels = [pickerId2, pickerId3, pickerId4]
-      .filter((id) => id > 0)
+      .filter((index) => index > 0)
+      .map((index) => {
+        const levelName = this.data.pickerData2[index];
+        const level = this.data.pickerDataList2.find(
+          (item) => item.name === levelName
+        );
+        return level.id;
+      })
       .join(",");
     obj.relationship = this.data.pickerIndex;
     obj.birthday = this.data.date;
