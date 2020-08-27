@@ -543,12 +543,6 @@ Page({
     if (this.data.date == "请选择日期") {
       errorMessage = "请选择生日";
     }
-    if (util.isEmpty(this.data.currLevelNum)) {
-      errorMessage = "请填写级位号";
-    }
-    if (this.data.currLevelNum.length > 64) {
-      errorMessage = "级位号超过规定长度, 请确认";
-    }
 
     if (errorMessage) {
       wx.showToast({

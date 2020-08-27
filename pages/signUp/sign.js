@@ -71,8 +71,6 @@ Page({
     coachClassIndex: null,
     // 当前的级别
     currLevelId: "",
-    // 当前级位号
-    currLevelNum: "",
     // 考试的md5码
     examCode: "",
     // 头像url
@@ -438,12 +436,6 @@ Page({
     }
     if (!!!this.data.coachClassIndex) {
       errorMessage = "请选择班级";
-    }
-    if (util.isEmpty(this.data.currLevelNum)) {
-      errorMessage = "请填写级位号";
-    }
-    if (this.data.currLevelNum.length > 64) {
-      errorMessage = "级位号超过规定长度, 请确认";
     }
     if (errorMessage) {
       wx.showToast({
