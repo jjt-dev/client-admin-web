@@ -3,7 +3,8 @@ var config = require("../../lib/js/config.js");
 var baseURL = config.config().baseURL;
 var mediaURL = config.config().mediaURL;
 var common = require("../../lib/js/common.js");
-const util = require("../../utils/util.js");
+const { getSignedStudents } = require("../../utils/httpUtil");
+
 Page({
   /**
    * 页面的初始数据
@@ -88,14 +89,20 @@ Page({
     phone: "",
     // 报考人和考生的关系
     // relationship:'',
+
+    studentIndex: 0,
+    signedStudents: [],
+  },
+  studentPicker: function (e) {
+    this.setData({
+      studentIndex: e.detail.value,
+    });
   },
   bindDateChange: function (e) {
-    console.log("picker发送选择改变，携带值为", e.detail.value);
     this.setData({
       date: e.detail.value,
     });
   },
-
   // 性别
   genderPicker: function (event) {
     let index = event.detail.value;
@@ -199,6 +206,7 @@ Page({
         that.getProcess(token, examCode);
         that.getInfo(token, examCode);
         that.getCoachClasses(token, examCode, coachId);
+        getSignedStudents(examCode, that);
       },
     });
   },
