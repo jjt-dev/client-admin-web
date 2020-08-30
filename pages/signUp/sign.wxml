@@ -23,7 +23,10 @@
     <!-- 1 -->
     <view class="list">
       <view class="listLi" hidden="{{signedStudents.length === 0}}">
-        <label class="group">孩子列表</label>
+        <label class="group">
+          <text decode="{{true}}">&ensp;</text>
+          选择孩子
+        </label>
         <picker class="picker" bindchange="studentPicker" value='{{studentIndex}}' range='{{signedStudents}}' range-key='name'>
           {{signedStudents[studentIndex].name}}
         </picker>
@@ -91,7 +94,10 @@
         </picker>
       </view>
       <view class="listLi">
-        <label class="group">\t带色</label>
+        <label class="group">
+          <text decode="{{true}}">&ensp;</text>
+          带色
+        </label>
         <input type="text" class="input" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{nowLeve}}"></input>
       </view>
     </view>
@@ -107,25 +113,34 @@
         </picker>
       </view>
       <view class="listLi">
-        <label class="group">\t报考级别2</label>
+        <label class="group">
+          <text decode="{{true}}">&ensp;</text>
+          报考级别2
+        </label>
         <picker class="picker" bindchange="pickerLeveClick3" value='{{pickerIndex3}}' range='{{pickerData2}}'>
           {{pickerData2[pickerIndex3]}}
         </picker>
       </view>
       <view class="listLi">
-        <label class="group">\t报考级别3</label>
+        <label class="group">
+          <text decode="{{true}}">&ensp;</text>
+          报考级别3
+        </label>
         <picker class="picker" bindchange="pickerLeveClick4" value='{{pickerIndex4}}' range='{{pickerData2}}'>
           {{pickerData2[pickerIndex4]}}
         </picker>
       </view>
       <view class="listLi">
-        <label class="group">\t考试时间</label>
+        <label class="group">
+          <text decode="{{true}}">&ensp;</text>
+          考试时间
+        </label>
         <input type="text" class="input" style="  width: 100%;" disabled="disabled" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{title}}"></input>
       </view>
     </view>
     <!-- 住址 -->
     <view class="adress">
-      <label>\t住址</label>
+      <label>住址</label>
       <textarea placeholder="请输入您的详细地址" placeholder-style="font-size:12px;color:#898989;padding-left:16rpx;" bindinput="address" value="{{address}}"></textarea>
     </view>
     <!-- 操作层 -->

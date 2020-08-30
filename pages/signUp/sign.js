@@ -3,7 +3,7 @@ var config = require("../../lib/js/config.js");
 var baseURL = config.config().baseURL;
 var mediaURL = config.config().mediaURL;
 var common = require("../../lib/js/common.js");
-const { getSignedStudents } = require("../../utils/httpUtil");
+const { getSignedStudents, updateSignStudentInfo } = require("./helper");
 
 Page({
   /**
@@ -13,25 +13,13 @@ Page({
     count: 1,
     imgsArr: [],
     imgconFlag: false,
-    // faceUrl: "",
     tempFilePaths: "",
     flag: false,
-
     loading: false,
     title: "保存中",
     msgdata: "", //提示框信息
     msgFlag: false,
     date: "请选择日期",
-    relationship: [
-      "父亲",
-      "母亲",
-      "爷爷",
-      "奶奶",
-      "外婆",
-      "外公",
-      "姐姐",
-      "哥哥",
-    ],
     genderList: ["女", "男"],
     pickerIndex: 0,
     leveList: [], //等级数组
@@ -87,16 +75,12 @@ Page({
     parentName: "",
     // 联系电话
     phone: "",
-    // 报考人和考生的关系
-    // relationship:'',
 
     studentIndex: 0,
     signedStudents: [],
   },
   studentPicker: function (e) {
-    this.setData({
-      studentIndex: e.detail.value,
-    });
+    updateSignStudentInfo(this, e.detail.value);
   },
   bindDateChange: function (e) {
     this.setData({
@@ -472,7 +456,6 @@ Page({
         return level.id;
       })
       .join(",");
-    obj.relationship = this.data.pickerIndex;
     obj.birthday = this.data.date;
     obj.coachClassId = this.data.coachClasses[this.data.coachClassIndex].id;
     obj.currLevelNum = this.data.currLevelNum;
@@ -518,39 +501,6 @@ Page({
       },
     });
   },
-  // pay: function (e) {
-  //   let obj = e.detail.value;
-  //   obj.address = this.data.address;
-  //   obj.coachId = this.data.coachId;
-  //   obj.currLevelId = this.data.currLevelId;
-  //   obj.examCode = this.data.examCode;
-  //   obj.gender = this.data.gender;
-  //   obj.faceUrl = this.data.faceUrl;
-  //   obj.levels = this.data.levels;
-  //   obj.relationship = this.data.pickerIndex;
-  //   wx.getStorage({
-  //     key: 'token',
-  //     success(res) {
-  //       var token = res.data;
-  //       wx.request({
-  //         url: baseURL + '/sign/sign',
-  //         header: {
-  //           "authorization": "Bearer " + token,
-  //           'content-type': 'application/x-www-form-urlencoded',
-  //         },
-  //         method: 'post',
-  //         data: obj,
-  //         success: function (res) {
-  //           const data = res.data;
-  //           if (data.status == 1) {
-  //             wx.navigateTo({
-  //               url: '../../pages/pay/pay?id=' + data.signId,
-  //             })
-  //           } else { }
-  //         },
-  //       })
-  //     }
-  //   })
 
   // },
   /**
