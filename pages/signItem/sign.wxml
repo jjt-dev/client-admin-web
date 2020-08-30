@@ -24,7 +24,7 @@
     <view class="list">
       <view class="listLi">
         <label class="group">
-          <text decode="{{true}}">&ensp;</text>
+          <span class="required">*</span>
           孩子姓名
         </label>
         <input type="text" class="input" placeholder-style='text-align:right;font-size:12px;color:#898989' placeholder="请输入" value="{{name}}" name="name"></input>
