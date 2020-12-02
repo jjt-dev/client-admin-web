@@ -93,7 +93,7 @@ input::-webkit-input-placeholder {
   border-radius: 44rpx;
   position: relative;
   z-index: 2;
-  top: 580rpx;
+  top: 500rpx;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -124,7 +124,7 @@ input::-webkit-input-placeholder {
   border-radius: 43rpx;
   position: absolute;
   z-index: 2;
-  top: 470rpx;
+  top: 370rpx;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -136,4 +136,14 @@ input::-webkit-input-placeholder {
 
 .picker-placeholder {
   opacity: 0.5;
+}
+
+.section {
+  font-size: 28rpx;
+}
+.on {
+  display: block;
+}
+.off {
+  display: none;
 }

@@ -13,7 +13,8 @@ Page({
     loading: false,
     title: "查询中",
     cardIdIndex: null,
-    cardIds: [],
+    cardIds: [{ id: -1, cardId: "手动输入" }],
+    isUserInput: false,
   },
   bindinput: function (e) {
     this.setData({
@@ -75,9 +76,11 @@ Page({
 
   pickerCardId: function (e) {
     let cardIdIndex = e.detail.value;
+    let isUserInput = Number(cardIdIndex) === this.data.cardIds.length - 1;
     this.setData({
       cardIdIndex,
       number: null,
+      isUserInput,
     });
   },
 
@@ -98,7 +101,7 @@ Page({
           method: "get",
           success: function (res) {
             that.setData({
-              cardIds: res.data.data,
+              cardIds: res.data.data.concat(that.data.cardIds),
             });
           },
         });

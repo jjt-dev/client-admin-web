@@ -7,12 +7,12 @@
   <!-- 主题 -->
   <view class="back1">
     <image class="image1" src="../../image/index/home_bg_image2.png"></image>
-    <input class="input" placeholder="请输入身份证号查询" bindinput="bindinput" value='{{number}}'></input>
-    <picker class="picker" bindchange="pickerCardId" range-key='cardId' value='{{cardIdIndex}}' range='{{cardIds}}'>
+    <picker wx:if='{{!isUserInput}}' class="picker" bindchange="pickerCardId" range-key='cardId' value='{{cardIdIndex}}' range='{{cardIds}}'>
       <label class="{{cardIdIndex?'':'picker-placeholder '}}">
-        {{cardIdIndex?cardIds[cardIdIndex].cardId:'或选择身份证号查询'}}
+        {{cardIdIndex?cardIds[cardIdIndex].cardId:'选择身份证号查询'}}
       </label>
     </picker>
+    <input wx:if='{{isUserInput}}' class="input" placeholder="请输入身份证号查询" bindinput="bindinput" value='{{number}}'></input>
     <view class="search" bindtap="search">
       <image src="../../image/index/home_bt_search.png"></image>
       <label>搜索</label>
