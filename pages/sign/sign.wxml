@@ -1,19 +1,14 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container1">
   <view class="title">
-    <image src="../../image/index/home_bg_image1.png">
-    </image>
+    <image src="../../image/index/home_bg_image1.png"></image>
     <view class="tou">
-      <image class="kuang" src="../../image/index/details_ic_heard_bg.png">
-      </image>
-      <image class="touxiang" src='{{avatarUrl}}'>
-        </image>
+      <image class="kuang" src="../../image/index/details_ic_heard_bg.png"></image>
+      <image class="touxiang" src='{{avatarUrl}}'></image>
     </view>
-      <view class='name' wx:if="{{!tokenFlag}}">
-          {{userName}}
-      </view>
+    <view class='name' wx:if="{{!tokenFlag}}">{{userName}}</view>
   </view>
- <view class="button">
+  <view class="button">
     <view class="new" bindtap='newSign'>
       <image src="../../image/index/home_bt_xbm.png"></image>
       <label>新报名</label>
@@ -22,19 +17,15 @@
       <image src="../../image/index/home_bt_bmls.png"></image>
       <label>报名历史</label>
     </view>
- </view>
- 
- <view class="search" bindtap="search">
+  </view>
+  <view class="search" bindtap="search">
     <image src="../../image/index/home_bt_search.png"></image>
     <label>成绩查询</label>
- </view>
-  <image class="bottom" src="../../image/index/home_bg_image2.png"> </image>
-  <image class="bottom-title" src="../../image/index/home_bg_title.png"> </image>
+  </view>
+  <image class="bottom" src="../../image/index/home_bg_image2.png"></image>
+  <image class="bottom-title" src="../../image/index/home_bg_title.png"></image>
 </view>
-<button class="user-motto name"  
-	    open-type="getUserInfo" 
-	    bindgetuserinfo="bindGetUserInfo"
-      wx:if="{{tokenFlag}}">登录
-    </button> 
-<view class='checkNet' bindtap='tokenF' wx:if="{{tokenFlag}}">
-</view>
+<button class="user-motto name" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" wx:if="{{tokenFlag}}">
+  登录
+</button>
+<view class='checkNet' bindtap='tokenF' wx:if="{{tokenFlag}}"></view>

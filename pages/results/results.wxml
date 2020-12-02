@@ -1,23 +1,23 @@
-<!--pages/repairList/repairList.wxml-->
-<!--导航条-->
+<!-- pages/repairList/repairList.wxml -->
+<!-- 导航条 -->
 <view class='body'>
-<loading hidden="{{!loading}}">加载中</loading>
-<!-- 头部 -->
-<navbar page-name="成绩查询"></navbar>
-
-<!-- 主题 -->
-<view class="back1">
-  <image class="image1" src="../../image/index/home_bg_image2.png"> </image>
-  <input class="input" placeholder="请输入孩子身份证号" bindinput="bindinput" value='{{number}}'></input>
-  <view class="search" bindtap="search">
-    <image src="../../image/index/home_bt_search.png">
-    </image>
-    <label>
-        搜索
-    </label>
+  <loading hidden="{{!loading}}">加载中</loading>
+  <!-- 头部 -->
+  <navbar page-name="成绩查询"></navbar>
+  <!-- 主题 -->
+  <view class="back1">
+    <image class="image1" src="../../image/index/home_bg_image2.png"></image>
+    <input class="input" placeholder="请输入身份证号查询" bindinput="bindinput" value='{{number}}'></input>
+    <picker class="picker" bindchange="pickerCardId" range-key='cardId' value='{{cardIdIndex}}' range='{{cardIds}}'>
+      <label class="{{cardIdIndex?'':'picker-placeholder '}}">
+        {{cardIdIndex?cardIds[cardIdIndex].cardId:'或选择身份证号查询'}}
+      </label>
+    </picker>
+    <view class="search" bindtap="search">
+      <image src="../../image/index/home_bt_search.png"></image>
+      <label>搜索</label>
+    </view>
+    <image class="image2" src="../../image/index/home_bg_title.png"></image>
+    <image class="image3" src="../../image/index/home_bg_image3.png"></image>
   </view>
-  <image class="image2" src="../../image/index/home_bg_title.png"> </image>
-  <image class="image3" src="../../image/index/home_bg_image3.png"> </image>
-</view>
-
 </view>

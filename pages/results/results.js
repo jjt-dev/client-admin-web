@@ -8,22 +8,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    number: "",
+    number: null,
     token: "",
     loading: false,
     title: "查询中",
+    cardIdIndex: null,
+    cardIds: [],
   },
   bindinput: function (e) {
     this.setData({
       number: e.detail.value,
+      cardIdIndex: null,
     });
   },
-  /**
-   * 搜索
-   */
-  search: function (e) {
+
+  search: function () {
+    const { number, cardIdIndex, cardIds } = this.data;
+    let cardId = number;
+    if (cardIdIndex !== null) {
+      cardId = cardIds[cardIdIndex].cardId;
+    }
+    this.searchStduent(cardId);
+  },
+
+  searchStduent: function (cardId) {
     var that = this;
-    let cardId = this.data.number;
     this.setData({
       loading: true,
     });
@@ -63,10 +72,39 @@ Page({
     });
     return false;
   },
+
+  pickerCardId: function (e) {
+    let cardIdIndex = e.detail.value;
+    this.setData({
+      cardIdIndex,
+      number: null,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function () {
+    var that = this;
+    wx.getStorage({
+      key: "token",
+      success(res) {
+        wx.request({
+          url: baseURL + "/sign/history/cardIds",
+          header: {
+            authorization: "Bearer " + res.data,
+            "content-type": "application/x-www-form-urlencoded",
+          },
+          method: "get",
+          success: function (res) {
+            that.setData({
+              cardIds: res.data.data,
+            });
+          },
+        });
+      },
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
