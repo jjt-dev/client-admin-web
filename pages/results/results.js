@@ -102,6 +102,7 @@ Page({
           success: function (res) {
             that.setData({
               cardIds: res.data.data.concat(that.data.cardIds),
+              isUserInput: res.data.data.length === 0,
             });
           },
         });
