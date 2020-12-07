@@ -38,14 +38,14 @@
 <!-- 钱数 -->
 <view class="money">
   <label class="feeLable">
-    所需费用：
+    <label>所需费用:</label>
+    <label class="number">
+    ¥{{totalFee}}
+    </label>
   </label>
-  <view class="fee">
-     <label class="icon">¥</label>
-     <label class="number">
-      {{totalFee}}
-     </label>
-  </view>
+
+  <!-- <view class="fee">
+  </view> -->
  <!-- 成功 -->
 <view class="success" wx:if="{{!flag}}">
   <image src="../../image/index/bt_pay Success.png">
@@ -54,11 +54,15 @@
       支付成功
   </label>  
 </view>
+<view class="qrcode" wx:if="{{flag}}"> 
+  <image src="{{qrCodeUrl}}">
+  </image>
+</view>
 </view>
 <!-- 操作 -->
 <view class="option" wx:if="{{flag}}">
       <view class="pay" bindtap="pay">
-        报名成功, 去线下支付
+        请用二维码支付
       </view>
   </view>
 <view class="option" wx:if="{{!flag}}">

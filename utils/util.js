@@ -51,9 +51,17 @@ const formatDate = (number, format = "YYYY-MM-DD") => {
   return format.replace(/\//g, "-");
 };
 
+const getHeader = (token) => {
+  return {
+    authorization: "Bearer " + token,
+    "content-type": "application/x-www-form-urlencoded",
+  };
+};
+
 module.exports = {
   formatTime,
   isEmpty,
   buildRequest,
   formatDate,
+  getHeader,
 };

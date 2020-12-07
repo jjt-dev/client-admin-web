@@ -1,16 +1,17 @@
 /* pages/pay/pay.wxss */
 @import "../../pages/signUp/sign.wxss";
 @import "../../lib/style/asset.wxss";
-.money,.fee{
+.money,
+.fee {
   width: 100%;
   height: auto;
 }
-.money .feeLable{
-  width:100%;
-  font-size:14px;
-  font-family:Microsoft YaHei;
-  font-weight:400;
-  color:rgba(49,49,49,1);
+.money .feeLable {
+  width: 100%;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(49, 49, 49, 1);
   text-align: center;
   margin-top: 43rpx;
   display: block;
@@ -19,57 +20,53 @@
   display: flex;
   position: relative;
   width: 220rpx;
-  margin: 23rpx auto 0 ;
+  margin: 23rpx auto 0;
 }
-.fee .icon{
-  width:16rpx;
-  height:22rpx;
-  font-size:14px;
-  font-family:Microsoft YaHei;
-  font-weight:400;
-  color:rgba(49,49,49,1);
-  line-height:18px;
-  display: block;
-  top: 5rpx;
+.feeLable {
+  display: flex;
+  font-size: 16px;
 }
-.fee .number{
-  display: block;
-  font-size:30px;
-  font-family:Microsoft YaHei;
-  font-weight:bold;
-  color:rgba(255,120,0,1);
-  position: absolute;
-  left: 20rpx;
-  top: -10rpx;
+.feeLable .number {
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(255, 120, 0, 1);
 }
 
 /* success */
-.success{
+.success {
   position: relative;
   margin-top: 150rpx;
 }
-.success image{
-  width:104rpx;
-  height:104rpx;
+.success image {
+  width: 104rpx;
+  height: 104rpx;
   margin: 0 auto;
   display: block;
 }
-.success label{
+.success label {
   display: block;
-  width:100%;
-  font-size:14px;
-  font-family:Microsoft YaHei;
-  font-weight:400;
-  color:rgba(49,49,49,1);
+  width: 100%;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: rgba(49, 49, 49, 1);
   text-align: center;
-  margin-top: 21rpx
+  margin-top: 21rpx;
 }
-.option{
+.option {
   position: fixed;
   bottom: 0;
 }
-.pay{
-  width:405rpx;
-  height:67rpx;
+.pay {
+  width: 405rpx;
+  height: 67rpx;
   margin: 25rpx auto 0;
+}
+
+.qrcode image {
+  margin-top: 450rpx;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 0 auto;
+  display: block;
 }

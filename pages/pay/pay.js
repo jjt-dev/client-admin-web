@@ -1,9 +1,9 @@
-// pages/pay/pay.js
-// pages/signUp/sign.js
+import { getHeader } from "../../utils/util";
 var config = require("../../lib/js/config.js");
 var baseURL = config.config().baseURL;
 var mediaURL = config.config().mediaURL;
 var common = require("../../lib/js/common.js");
+
 Page({
   /**
    * 页面的初始数据
@@ -20,15 +20,15 @@ Page({
     msgFlag: false,
     msgdata: "",
     totalFee: 0,
+    qrCodeUrl: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(555, options);
     var id = options.id;
-    // var id = 31;
-    // var examCode = '248e29b8f7571d9cb9442e081f70c00a';
     let that = this;
     that.setData({
       signId: id,
@@ -38,6 +38,7 @@ Page({
       success(res) {
         var token = res.data;
         that.getProcess(token, id);
+        that.getQrCode(token, id);
       },
     });
   },
@@ -45,10 +46,7 @@ Page({
     var that = this;
     wx.request({
       url: baseURL + "/sign/history/item",
-      header: {
-        authorization: "Bearer " + token,
-        "content-type": "application/x-www-form-urlencoded",
-      },
+      header: getHeader(token),
       method: "get",
       data: {
         id: id,
@@ -80,6 +78,22 @@ Page({
       },
     });
   },
+  getQrCode: function (token, id) {
+    var that = this;
+    wx.request({
+      url: baseURL + "/exam/qrCodeUrl",
+      header: getHeader(token),
+      method: "get",
+      data: {
+        signId: id,
+      },
+      success: function (res) {
+        that.setData({
+          qrCodeUrl: mediaURL + res.data.data,
+        });
+      },
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -88,71 +102,6 @@ Page({
     wx.navigateTo({
       url: "../sign/sign",
     });
-
-    // var that=this;
-    // that.setData({
-    //   loading:true
-    // })
-    // wx.getStorage({
-    //   key: 'token',
-    //   success(res) {
-    //     var token = res.data;
-    //     var signId = that.data.signId;
-    //     wx.request({
-    //       url: baseURL + '/pay/fee',
-    //       header: {
-    //         "authorization": "Bearer " + token,
-    //         'content-type': 'application/x-www-form-urlencoded',
-    //       },
-    //       method: 'POST',
-    //       data: {
-    //         signId: signId,
-    //       },
-    //       success: function (res) {
-    //         console.log(res);
-    //         let data = res.data.data;
-    //         that.setData({
-    //           loading: false
-    //         })
-    //         if (res.data.status == 1) {
-    //           wx.requestPayment(
-    //             {
-    //               'timeStamp': data.timestamp,
-    //               'nonceStr': data.nonceStr,
-    //               'package': 'prepay_id=' + data.prepayId,
-    //               'signType': 'MD5',
-    //               'paySign': data.paySign,
-    //               'success': function (res) {
-    //                   that.setData({
-    //                     flag:false,
-    //                   })
-    //               },
-    //               'fail': function (res) {
-    //                 console.log(res)
-    //               },
-    //               'complete': function (res) {
-    //                 console.log(res)
-    //               }
-    //             })
-    //         }else{
-    //           that.setData({
-    //             msgFlag:true,
-    //             msgdata: res.data.msg
-    //           })
-    //           setTimeout(function () {
-    //             that.setData({
-    //               msgFlag: false,
-    //               msgdata: ""
-    //             })
-    //           }, 1000)
-    //         }
-    //       },
-    //       fail: function (res) {
-    //         console.log('submit fail');
-    //       },
-    //     })
-    //   }
-    // })
   },
   paySuccess: function (e) {
     wx.navigateTo({
