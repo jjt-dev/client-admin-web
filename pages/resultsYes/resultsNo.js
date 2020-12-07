@@ -14,6 +14,7 @@ Page({
     cordNumber: "",
     faceUrl: "../../image/index/home_bg_image.png",
     list: [],
+    resultUrl: "",
   },
 
   /**
@@ -21,8 +22,10 @@ Page({
    */
   onLoad: function (options) {
     var orderId = options.cordId;
-    // var orderId = '510722201304278384';
     let that = this;
+    that.setData({
+      resultUrl: `https://jjt2.top/school/#/?mode=miniProgram&page=examResult&cardId=${orderId}`,
+    });
     wx.getStorage({
       key: "token",
       success(res) {
