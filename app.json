@@ -12,10 +12,9 @@
     "pages/coach/coach",
     "pages/logs/logs",
     "pages/text/text",
-
+    "pages/examCertif/examCertif",
     "pages/navbar/navbar",
     "pages/navbar2/navbar"
-    
   ],
   "window": {
     "navigationStyle": "custom",
@@ -29,6 +28,5 @@
       "desc": "你的位置信息将用于报修地址定位"
     }
   },
- 
   "sitemapLocation": "sitemap.json"
 }

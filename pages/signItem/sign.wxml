@@ -136,6 +136,7 @@
     <!-- 操作层 -->
     <view class="option" wx:if="{{currStateFlag}}">
       <button class="conform" form-type='submit' data-type="conform">保存</button>
+      <button class="conform" bindtap="showExamCertif">准考证</button>
       <button class="pay" form-type='submit' data-type="pay">缴费</button>
     </view>
   </form>
