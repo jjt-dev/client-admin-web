@@ -14,7 +14,7 @@
         <image class="kuang" src="../../image/index/details_ic_heard_bg.png"></image>
         <image wx:if="{{flag}}" class="touxiang" src='{{faceUrl1}}'></image>
         <image wx:if="{{!flag}}" class="touxiang1" src='../../image/index/details_ic_heard.png'></image>
-        <label wx:if="{{!flag}}">上传头像</label>
+        <label wx:if="{{!flag}}" class="avatar-notif">上传2寸免冠头像, 底色为白色或蓝色, jpg格式</label>
       </view>
     </view>
   </view>
