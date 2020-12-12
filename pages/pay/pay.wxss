@@ -69,4 +69,16 @@
   height: 300rpx;
   margin: 0 auto;
   display: block;
+  margin-top: 30rpx;
+}
+
+.notif {
+  width: 100%;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 5rpx;
+  display: block;
+  color: rgba(255, 120, 0, 1);
 }
