@@ -458,7 +458,8 @@ Page({
       .join(",");
     obj.birthday = this.data.date;
     obj.coachClassId = this.data.coachClasses[this.data.coachClassIndex].id;
-    obj.currLevelNum = this.data.currLevelNum;
+    // 目前没有级别证书编号
+    obj.currLevelNum = ''
     this.setData({
       loading: true,
     });
